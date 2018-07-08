@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>transaction_app</name>
-	<description>Demo project for Spring Boot</description>
+	<description>App for transaction Statistics</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -33,11 +33,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -1,4 +1,4 @@
-package model;
+package com.n26.transaction_app.model;
 
 import java.util.Collection;
 import java.util.List;

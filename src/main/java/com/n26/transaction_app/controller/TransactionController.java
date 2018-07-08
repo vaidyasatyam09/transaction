@@ -1,7 +1,8 @@
-package com.n26.transaction_app;
+package com.n26.transaction_app.controller;
 
-import model.StatisticsData;
-import model.TransactionData;
+import com.n26.transaction_app.service.TransactionService;
+import com.n26.transaction_app.model.StatisticsData;
+import com.n26.transaction_app.model.TransactionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

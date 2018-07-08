@@ -1,4 +1,4 @@
-package model;
+package com.n26.transaction_app.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import static java.lang.System.currentTimeMillis;

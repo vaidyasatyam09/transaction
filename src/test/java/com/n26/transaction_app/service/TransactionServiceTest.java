@@ -1,7 +1,8 @@
-package com.n26.transaction_app;
+package com.n26.transaction_app.service;
 
 
-import model.TransactionData;
+import com.n26.transaction_app.model.TransactionData;
+import com.n26.transaction_app.service.TransactionService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 public class TransactionServiceTest {
 
     @Autowired
-    private  TransactionService subject;
+    private TransactionService subject;
 
     private Instant now = Instant.now();
     private long timestamp = now.toEpochMilli();

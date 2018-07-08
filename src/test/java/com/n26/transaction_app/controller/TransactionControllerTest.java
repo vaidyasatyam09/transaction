@@ -1,7 +1,8 @@
-package com.n26.transaction_app;
+package com.n26.transaction_app.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.TransactionData;
+import com.n26.transaction_app.controller.TransactionController;
+import com.n26.transaction_app.model.TransactionData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
-package com.n26.transaction_app;
+package com.n26.transaction_app.service;
 
-import comparator.TransactionDataComparator;
-import model.StatisticsData;
-import model.TransactionData;
+import com.n26.transaction_app.comparator.TransactionDataComparator;
+import com.n26.transaction_app.model.StatisticsData;
+import com.n26.transaction_app.model.TransactionData;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 

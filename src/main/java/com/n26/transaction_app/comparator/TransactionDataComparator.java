@@ -1,6 +1,6 @@
-package comparator;
+package com.n26.transaction_app.comparator;
 
-import model.TransactionData;
+import com.n26.transaction_app.model.TransactionData;
 
 import java.util.Comparator;
 
