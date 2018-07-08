@@ -9,8 +9,9 @@ Also a statistics API which will return the statistics of the transaction reciev
 DataStructure used in the application is PriorityQueue to make it easy to remove the transaction from the queue which are of timestamp older than 60sec.
 
 Running Test Cases :
-TransactionControllerTest.java : Run all the test cases
-TransactionServiceTest : Run all the test cases
+
+1.TransactionControllerTest.java : Run all the test cases
+2.TransactionServiceTest : Run all the test cases
 
 Steps to deploy and run:
-    mvn spring-boot:run -Dserver.port=
+mvn spring-boot:run -Dserver.port=
