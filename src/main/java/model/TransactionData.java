@@ -1,15 +1,19 @@
 package model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import static java.lang.System.currentTimeMillis;
 
 public class TransactionData {
+    public static final int TIME_LIMIT = 60000;
     private double amount;
-    private long timeStamp;
+    private long timestamp;
 
     public TransactionData() {
     }
 
-    public TransactionData(double amount, long timeStamp) {
+    public TransactionData(double amount, long timestamp) {
         this.amount = amount;
-        this.timeStamp = timeStamp;
+        this.timestamp = timestamp;
     }
 
     public double getAmount() {
@@ -20,13 +24,18 @@ public class TransactionData {
         this.amount = amount;
     }
 
-    public long getTimeStamp() {
-        return timeStamp;
+    public long getTimestamp() {
+        return timestamp;
     }
 
-    public void setTimeStamp(long timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
+    @JsonIgnore
+    public boolean isWithinTimeLimit() {
+        long timeDiff = currentTimeMillis() - timestamp;
+        return ( timeDiff<= TIME_LIMIT) && (0<timeDiff);
+    }
 
 }

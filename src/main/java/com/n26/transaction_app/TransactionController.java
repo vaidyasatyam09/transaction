@@ -15,16 +15,16 @@ public class TransactionController {
 
     @RequestMapping(value="/transactions",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus save(@RequestBody TransactionData data) {
-        System.out.println("Amount: "+data.getAmount());
-        System.out.println("Input TimeStamp: "+data.getTimeStamp());
+        if(data.getTimestamp()==0)
+            return HttpStatus.PARTIAL_CONTENT;
+        if(!data.isWithinTimeLimit())
+            return HttpStatus.NO_CONTENT;
         service.saveTransaction(data);
-        return HttpStatus.OK;
+        return HttpStatus.CREATED;
     }
 
     @RequestMapping(value="/statistics",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public StatisticsData getStatistics() {
         return service.getStatistics();
     }
-
-
 }

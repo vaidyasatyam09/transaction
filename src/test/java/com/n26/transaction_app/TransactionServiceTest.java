@@ -2,9 +2,6 @@ package com.n26.transaction_app;
 
 
 import model.TransactionData;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +23,7 @@ public class TransactionServiceTest {
     private Instant now = Instant.now();
     private long timestamp = now.toEpochMilli();
     private long timeStampSecond = now.plus(1000, ChronoUnit.MILLIS).toEpochMilli();
-    private long timeStampOld = now.minus(57, ChronoUnit.SECONDS).toEpochMilli();
-    private double delta = 0.01;
+    private long timeStampOld = now.minus(55, ChronoUnit.SECONDS).toEpochMilli();
     private TransactionData firstTransaction = new TransactionData(20, timestamp);
     private TransactionData secondTransaction = new TransactionData(40, timestamp);
     private TransactionData thirdTransaction = new TransactionData(60, timeStampSecond);
@@ -35,7 +31,7 @@ public class TransactionServiceTest {
 
     @Test
     public void shouldSaveTransaction(){
-        System.out.println(firstTransaction.getTimeStamp());
+        System.out.println(firstTransaction.getTimestamp());
         subject.saveTransaction(firstTransaction);
         subject.saveTransaction(secondTransaction);
         subject.saveTransaction(thirdTransaction);
@@ -50,9 +46,9 @@ public class TransactionServiceTest {
     public void shouldRemoveOlderTransactions() throws InterruptedException {
 
         subject.saveTransaction(oldTransaction);
-        assertEquals(1, subject.getStatistics().getCount());
-        Thread.sleep(3000);
-        assertEquals(0, subject.getStatistics().getCount());
+        assertEquals(1l, subject.getStatistics().getCount().longValue());
+        Thread.sleep(5000);
+        assertEquals(0, subject.getStatistics().getCount().longValue());
 
     }
 

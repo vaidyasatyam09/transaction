@@ -1,57 +1,65 @@
 package model;
 
+import java.util.Collection;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 public class StatisticsData {
-    private double sum;
-    private double avg;
-    private double max;
-    private double min;
-    private long count;
+    private Double sum=0.0;
+    private Double avg=0.0;
+    private Double max=0.0;
+    private Double min=0.0;
+    private Long count=0l;
 
-    public StatisticsData() {
-        System.out.println("no data for stats");
-    }
-
-    public StatisticsData(TransactionData data){
-        this.sum = data.getAmount();
-        this.avg = data.getAmount();
-        this.max = data.getAmount();
-        this.min = data.getAmount();
-        this.count = 1;
-    }
-    public StatisticsData(double sum, double avg, double max, double min, long count) {
-        this.sum = sum;
-        this.avg = avg;
-        this.max = max;
-        this.min = min;
-        this.count = count;
-    }
-
-    public double getSum() {
+    public Double getSum() {
         return sum;
     }
 
-    public double getAvg() {
+    public void setSum(Double sum) {
+        this.sum = sum;
+    }
+
+    public Double getAvg() {
         return avg;
     }
 
-    public double getMax() {
+    public void setAvg(Double avg) {
+        this.avg = avg;
+    }
+
+    public Double getMax() {
         return max;
     }
 
-    public double getMin() {
+    public void setMax(Double max) {
+        this.max = max;
+    }
+
+    public Double getMin() {
         return min;
     }
 
-    public long getCount() {
+    public void setMin(Double min) {
+        this.min = min;
+    }
+
+    public Long getCount() {
         return count;
     }
 
-    public void updateStatistics(StatisticsData statisticsData){
+    public void setCount(Long count) {
+        this.count = count;
+    }
 
-        this.avg = ((statisticsData.avg * statisticsData.count) + (this.avg * this.count)) / (statisticsData.count + this.count);
-        this.sum = statisticsData.sum + this.sum;
-        this.count = statisticsData.count + this.count;
-        this.max = Math.max(this.max, statisticsData.max);
-        this.min = Math.min(this.min, statisticsData.min);
+    public StatisticsData(Collection<TransactionData> transactions) {
+        final List<Double> amounts = transactions.stream().map(TransactionData::getAmount).collect(toList());
+        final Long count = amounts.stream().count();
+        if (count > 0) {
+            this.setCount(count);
+            this.setSum(amounts.stream().mapToDouble(Double::doubleValue).sum());
+            this.setAvg(amounts.stream().mapToDouble(Double::doubleValue).average().getAsDouble());
+            this.setMax(amounts.stream().max(Double::compareTo).get());
+            this.setMin(amounts.stream().min(Double::compareTo).get());
+        }
     }
 }
